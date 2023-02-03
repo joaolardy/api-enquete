@@ -11,4 +11,4 @@ try {
     console.error(error)
 }
 
-export const db = mongoClient.db()
+export const db = mongoClient.db();
