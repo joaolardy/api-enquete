@@ -6,14 +6,14 @@ export async function postaOpcao(req, res) {
     let body = req.body;
     const novaOpcao = {
         title: body.title,
-        poll: body.pollId,
+        pollId: body.pollId,
     }
     try {
-        const enqueteExistente = await db.collection('poll').findOne({ _id: new ObjectId(choice.pollId) })
+        const enqueteExistente = await db.collection('poll').findOne({ _id: ObjectId(novaOpcao.pollId) })
         //confere se existe a enquete
         if (!enqueteExistente) {
             res.sendStatus(404);
-            return
+            return 
         }
 
         //confere se a enquete esta vencida
@@ -41,7 +41,7 @@ export async function postaVoto(req, res) {
     }
 
     try {
-        const enqueteExistente = await db.collection('choice').findOne({ _id: new ObjectId(id) })
+        const enqueteExistente = await db.collection('choice').findOne({ _id: ObjectId(id) })
         //confere se existe a enquete
         if (!enqueteExistente) {
             res.sendStatus(404);
@@ -61,21 +61,5 @@ export async function postaVoto(req, res) {
 
     } catch (error) {
         res.status(500);
-    }
-}
-
-export async function listaOpcoes(req, res) {
-    const id = req.params.id;
-
-    try {
-        const listaAlternativas = await db.collection('choice').find({ pollId: id }).toArray;
-        if (listaAlternativas.length === 0) {
-            res.sendStatus(404);
-        } else {
-            res.send(listaAlternativas).status(200);
-        }
-
-    } catch (error) {
-        res.status(500).send(error);
     }
 }
