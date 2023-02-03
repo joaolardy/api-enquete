@@ -37,9 +37,10 @@ export async function criaEnquete(req, res){
 
 export async function listaOpcoes(req, res) {
     const id = req.params.id;
-
+    console.log(id);
     try {
-        const listaAlternativas = await db.collection('choice').find({ pollId: id }).toArray;
+        const listaAlternativas = await db.collection('choice').find({ pollId: id }).toArray();
+        console.log(listaAlternativas);
         if (listaAlternativas.length === 0) {
             res.sendStatus(404);
         } else {

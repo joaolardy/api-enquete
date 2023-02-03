@@ -9,11 +9,12 @@ export function validaOpcao(req, res, next){
     if(opcaoValida.error){
         res.sendStatus(422);
         return
-    }else next();
+    }
     next();
 }
 
 export function validaEnquete(req, res, next){
+    console.log(req.body);
     const enqueteValida = pollSchema.validate(req.body);
 
     if(enqueteValida.error){
