@@ -1,8 +1,8 @@
 ## Requisitos
 
 - Geral
-    - [ ]  A porta utilizada pelo seu servidor deve ser a 5000 (isso facilita nossa avaliação 🙂).
-    - [ ]  Versionamento usando Git é obrigatório. Crie um **repositório** no seu perfil do GitHub.
+    - [ ]  A porta utilizada pelo seu servidor deve ser a 5000.
+    - [ ]  Versionamento usando Git.
     - [ ]  Faça commits a cada funcionalidade implementada.
     - [ ]  Utilize dotenv.
     - [ ]  O deploy da API deve ser feito no Render e do banco no MongoDB Atlas.
